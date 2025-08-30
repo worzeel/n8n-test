@@ -8,8 +8,8 @@
       "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
       "typeVersion": 2,
       "position": [
-        -368,
-        -128
+        -512,
+        -288
       ],
       "id": "19979f76-6045-4fe4-b185-49577edaefa0",
       "name": "MCP Server Trigger",
@@ -20,13 +20,15 @@
         "description": "This is a test n8n tool that can accept a name and age or any combination",
         "workflowId": {
           "__rl": true,
-          "value": "ssLq4ixW03LfFkP6",
-          "mode": "list",
-          "cachedResultName": "Transformer"
+          "value": "={{ $workflow.id }}",
+          "mode": "id"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {},
+          "value": {
+            "age": "={{ $fromAI(\"age\", \"Age of the person\", \"number\", 999) }}",
+            "name": "={{ $fromAI(\"name\", \"name of the person\", \"string\") }}"
+          },
           "matchingColumns": [],
           "schema": [
             {
@@ -46,7 +48,7 @@
               "defaultMatch": false,
               "display": true,
               "canBeUsedToMatch": true,
-              "type": "string",
+              "type": "number",
               "removed": false
             }
           ],
@@ -57,11 +59,47 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        -32,
-        -32
+        -176,
+        -192
       ],
       "id": "e2af7303-daa0-4ed5-88f1-6680582d6863",
       "name": "Call n8n Workflow Tool"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "age",
+              "type": "number"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -432,
+        32
+      ],
+      "id": "2b8e2047-65c9-4b61-a663-9416d312658a",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "jsCode": "var result;\n\n// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  result = `Hello there ${item.json.name}`;\n}\n\nreturn [\n  {\n    json: { value: result }\n  }\n]"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -224,
+        32
+      ],
+      "id": "c40663e1-bd19-490d-91b2-4a2e7f812d6b",
+      "name": "Code"
     }
   ],
   "pinData": {},
@@ -76,13 +114,24 @@
           }
         ]
       ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "d2381736-3dc1-4438-b618-e1536bb48520",
+  "versionId": "4895e31f-08e5-4fe1-9d07-e29fcd421fe0",
   "meta": {
     "instanceId": "73df367f95967fe2cb0fb0b8985830943808022ba1a3a569564b5bae09c0a1a7"
   },
