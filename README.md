@@ -19,7 +19,7 @@ Used to add the test (dev) mcp server... it has 3 parameters you need to specify
 Parameters:
 * name of the mcp server
 * url
-* n0n-auth cookie
+* n8n-auth cookie
 
 You can get the cookie from browser
 
