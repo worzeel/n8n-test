@@ -15,3 +15,11 @@ Used to add the test (dev) mcp server... just specify the url, and the n0n-auth 
 
 The "dev" version of the MCP server can only work when using the web auth, which uses the n8n-auth cookie
 so the easiest way to test this, is to just grab the cookie from your browser... seems to work
+
+## Workflows
+
+Some test workflows that currently looking at
+
+### MCPServerTest
+
+Testing how MCP Server Triggers work

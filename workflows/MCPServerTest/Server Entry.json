@@ -1,0 +1,91 @@
+{
+  "name": "Server Entry",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "909e9b1a-209e-4d7c-bb0a-325bc851037d"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        -368,
+        -128
+      ],
+      "id": "19979f76-6045-4fe4-b185-49577edaefa0",
+      "name": "MCP Server Trigger",
+      "webhookId": "909e9b1a-209e-4d7c-bb0a-325bc851037d"
+    },
+    {
+      "parameters": {
+        "description": "This is a test n8n tool that can accept a name and age or any combination",
+        "workflowId": {
+          "__rl": true,
+          "value": "ssLq4ixW03LfFkP6",
+          "mode": "list",
+          "cachedResultName": "Transformer"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "age",
+              "displayName": "age",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -32,
+        -32
+      ],
+      "id": "e2af7303-daa0-4ed5-88f1-6680582d6863",
+      "name": "Call n8n Workflow Tool"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Call n8n Workflow Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d2381736-3dc1-4438-b618-e1536bb48520",
+  "meta": {
+    "instanceId": "73df367f95967fe2cb0fb0b8985830943808022ba1a3a569564b5bae09c0a1a7"
+  },
+  "id": "pFk9eLKeRTkK1Mw1",
+  "tags": []
+}
