@@ -1,4 +1,4 @@
 #!/bin/sh
 
-claude mcp add --transport http secure-api $1 \
-  --header "Cookie: n8n-auth=$2"
+claude mcp add --transport http $1 $2 \
+  --header "Cookie: n8n-auth=$3"
